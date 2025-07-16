@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   app:
     container_name: intern-app
@@ -16,6 +14,7 @@ services:
       - db
     volumes:
       - .:/usr/src/app
+      - ./config/database.docker.yml:/usr/src/app/config/database.yml
   db:
     container_name: intern-db
     image: postgres:15.3-alpine
