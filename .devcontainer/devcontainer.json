@@ -6,4 +6,6 @@
   ],
   "service": "app",
   "workspaceFolder": "/usr/src/app",
+  "remoteUser": "${localEnv:USER}",
+  "overrideCommand": false
 }

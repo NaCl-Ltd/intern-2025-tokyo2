@@ -2,6 +2,16 @@ FROM ruby:3.4.5
 
 ENV LANG C.UTF-8
 
+ARG USERNAME
+ARG USER_UID
+ARG USER_GID
+
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash \
+    && apt-get update && apt-get install -y sudo \
+    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
@@ -21,4 +31,5 @@ RUN gem install bundler -v '2.6.9'
 RUN bundle install
 
 EXPOSE 3000
+USER $USERNAME
 CMD ["rails", "server", "-b", "0.0.0.0"]
