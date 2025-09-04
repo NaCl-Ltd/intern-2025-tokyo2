@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :prves
   get 'password_resets/new'
   get 'password_resets/edit'
   root   "static_pages#home"
