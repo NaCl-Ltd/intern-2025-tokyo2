@@ -6,11 +6,17 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <!-- ここにprofileを追加 -->
+      <p>
+        <strong>profile:</strong>
+        <%= @user.profile.presence || "nodata" %>
+      </p>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
   </aside>
+
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
     <% if @user.microposts.any? %>
