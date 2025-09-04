@@ -6,6 +6,7 @@
   <%= user.profile.presence || "nodata" %>
 
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %>
+    | <%= link_to "delete", user, data: { "turbo-method": :delete,
+  turbo_confirm: "You sure?" } %>
   <% end %>
 </li>
