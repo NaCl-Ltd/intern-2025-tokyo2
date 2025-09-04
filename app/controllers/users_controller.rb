@@ -60,6 +60,15 @@ class UsersController < ApplicationController
     render 'show_follow', status: :unprocessable_entity
   end
 
+  def index
+  if params[:name].present?
+    @users = User.where("name LIKE ?", "%#{params[:name]}%")
+                .paginate(page: params[:page], per_page: 10)
+  else
+    @users = User.paginate(page: params[:page], per_page: 10)
+  end
+  end
+
   private
 
     def user_params
