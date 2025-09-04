@@ -15,6 +15,11 @@ Rails.application.routes.draw do
       get :followers
     end
   end
+
+  # config/routes.rb
+  scope "(:locale)", locale: /en|ja/ do
+    resources :books
+  end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
