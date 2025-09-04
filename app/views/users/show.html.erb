@@ -6,6 +6,11 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
+      <!-- ここにprofileを追加 -->
+      <p>
+        <strong>profile:</strong>
+        <%= @user.profile.presence || "nodata" %>
+      </p>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
