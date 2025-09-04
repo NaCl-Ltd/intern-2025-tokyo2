@@ -24,6 +24,11 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def index 
+     @microposts = Micropost.all
+  end
+
+
   private
 
     def micropost_params
